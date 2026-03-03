@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="CATTLEytics — case study and technical overview." />
+    <title>CATTLEytics — Shazim Rahman</title>
+    <link rel="stylesheet" href="../styles.css" />
+    <style>
+      .page-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 14px;
+      }
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 10px 12px;
+        border-radius: 12px;
+        border: 1px solid var(--border);
+        background: var(--panel);
+        color: var(--text);
+        text-decoration: none;
+        box-shadow: var(--shadow-soft);
+        transition: transform 120ms ease, background 120ms ease, border-color 120ms ease;
+        font-family: var(--mono);
+        font-size: 12.5px;
+      }
+      .btn:hover {
+        transform: translateY(-1px);
+        background: var(--panel-strong);
+        border-color: var(--border-strong);
+      }
+      .kvs {
+        display: grid;
+        gap: 10px;
+        margin-top: 12px;
+      }
+      .kv {
+        display: grid;
+        grid-template-columns: 140px 1fr;
+        gap: 10px;
+        padding: 12px;
+        border-radius: 14px;
+        border: 1px solid var(--border);
+        background: linear-gradient(180deg, var(--panel-strong), var(--panel));
+      }
+      .kv .k {
+        color: var(--muted);
+        font-family: var(--mono);
+        font-size: 12px;
+      }
+      .kv .v {
+        color: var(--text);
+        line-height: 1.55;
+      }
+      ul {
+        margin: 10px 0 0 18px;
+        color: var(--muted);
+        line-height: 1.65;
+      }
+      .note {
+        margin-top: 10px;
+        color: var(--muted);
+        font-family: var(--mono);
+        font-size: 12.5px;
+      }
+      .divider {
+        height: 1px;
+        background: linear-gradient(90deg, rgba(125,211,252,0.35), transparent);
+        margin: 14px 0;
+      }
+      .small {
+        font-size: 14px;
+        color: var(--muted);
+      }
+      code.inline {
+        font-family: var(--mono);
+        font-size: 0.95em;
+        padding: 2px 6px;
+        border-radius: 8px;
+        border: 1px solid var(--border);
+        background: var(--panel);
+        color: var(--text);
+      }
+    </style>
+  </head>
+
+  <body>
+    <main class="container">
+      <header class="header">
+        <div class="title-row">
+          <h1 class="name">CATTLEytics</h1>
+          <a class="theme-toggle" href="../index.html" aria-label="Back to home">←</a>
+        </div>
+
+        <p class="tagline">Capstone case study • ML + backend systems</p>
+        <p class="bio">
+          A full-stack capstone project to predict cattle offspring traits from parental/genetic data and serve predictions through a
+          production-style backend.
+        </p>
+
+        <div class="page-actions">
+          <a class="btn" href="../index.html" aria-label="Back to home">← HOME</a>
+          <a class="btn" href="mailto:shazimrahman@hotmail.com">CONTACT</a>
+          <span class="btn" aria-label="Repo status">REPO: PRIVATE</span>
+        </div>
+
+        <p class="note">
+          This page is intentionally written as a public case study (the repository is private).
+        </p>
+      </header>
+
+      <section class="card">
+        <div class="card-title">Overview</div>
+
+        <div class="kvs">
+          <div class="kv">
+            <div class="k">Goal</div>
+            <div class="v">
+              Predict multiple offspring metrics (multi-target regression/classification style outputs) using sire + dam features and historical records.
+            </div>
+          </div>
+
+          <div class="kv">
+            <div class="k">Stack</div>
+            <div class="v">
+              <code class="inline">Go</code> backend (REST), <code class="inline">Postgres</code>, <code class="inline">Python</code> ML microservice (gRPC),
+              and a <code class="inline">next.js</code> frontend consuming the API.
+            </div>
+          </div>
+
+          <div class="kv">
+            <div class="k">My role</div>
+            <div class="v">
+              Owned the Go backend + DB design, API contracts, and ML serving integration (gRPC).
+            </div>
+          </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="small">
+          If you want to talk architecture tradeoffs, deployment, or model-serving decisions, hit “Contact”.
+        </div>
+      </section>
+
+      <section class="card">
+        <div class="card-title">Architecture</div>
+
+        <ul>
+          <li><b>Go API</b>: authentication + request validation + REST endpoints for predictions and data access.</li>
+          <li><b>Postgres</b>: structured storage for cattle records, features, and inference-related metadata.</li>
+          <li><b>Python gRPC</b>: loads trained model(s), exposes strongly-typed inference RPCs, returns predictions to Go.</li>
+          <li><b>Frontend</b>: calls the Go API; Go fans out to Postgres + gRPC as needed.</li>
+        </ul>
+      </section>
+
+      <section class="card">
+        <div class="card-title">What I built</div>
+
+        <ul>
+          <li>Designed API routes and DTOs for model inference requests/responses.</li>
+          <li>Defined gRPC service contracts (protobufs) and implemented client/server integration.</li>
+          <li>Built a clean persistence layer for feature records and related entities.</li>
+          <li>Production-minded error handling, request logging, and validation patterns.</li>
+        </ul>
+
+        <p class="note">
+          TODO: add 1–2 screenshots (UI, architecture diagram) once you have them.
+        </p>
+      </section>
+
+      <footer class="footer">
+        <div class="footer-row">
+          <span>© <span id="year"></span> Shazim Rahman</span>
+          <span class="dot">•</span>
+          <a class="footer-link" href="/">Back to home</a>
+        </div>
+      </footer>
+    </main>
+
+    <script>
+      document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
+  </body>
+</html>

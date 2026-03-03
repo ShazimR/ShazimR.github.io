@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="TCP HTTP Server — case study and repo link." />
+    <title>TCP HTTP Server — Shazim Rahman</title>
+    <link rel="stylesheet" href="../styles.css" />
+    <style>
+      .page-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 14px;
+      }
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 10px 12px;
+        border-radius: 12px;
+        border: 1px solid var(--border);
+        background: var(--panel);
+        color: var(--text);
+        text-decoration: none;
+        box-shadow: var(--shadow-soft);
+        transition: transform 120ms ease, background 120ms ease, border-color 120ms ease;
+        font-family: var(--mono);
+        font-size: 12.5px;
+      }
+      .btn:hover {
+        transform: translateY(-1px);
+        background: var(--panel-strong);
+        border-color: var(--border-strong);
+      }
+      .pill {
+        font-family: var(--mono);
+        font-size: 12px;
+        color: var(--muted);
+        padding: 7px 10px;
+        border: 1px solid var(--border);
+        background: var(--panel);
+        border-radius: 999px;
+      }
+      .grid2 {
+        display: grid;
+        gap: 12px;
+      }
+      @media (min-width: 720px) {
+        .grid2 { grid-template-columns: 1fr 1fr; }
+      }
+      ul {
+        margin: 10px 0 0 18px;
+        color: var(--muted);
+        line-height: 1.65;
+      }
+      code.inline {
+        font-family: var(--mono);
+        font-size: 0.95em;
+        padding: 2px 6px;
+        border-radius: 8px;
+        border: 1px solid var(--border);
+        background: var(--panel);
+        color: var(--text);
+      }
+    </style>
+  </head>
+
+  <body>
+    <main class="container">
+      <header class="header">
+        <div class="title-row">
+          <h1 class="name">TCP HTTP Server</h1>
+          <a class="theme-toggle" href="../index.html" aria-label="Back to home">←</a>
+        </div>
+
+        <p class="tagline">Go • Networking • HTTP parsing</p>
+        <p class="bio">
+          A learning-focused project: implement an HTTP/1.1-ish server over raw TCP sockets, including parsing, routing, and response writing.
+        </p>
+
+        <div class="page-actions">
+          <a class="btn" href="../index.html" aria-label="Back to home">← HOME</a>
+          <a class="btn" href="https://github.com/ShazimR/tcp-http-server" target="_blank" rel="noreferrer">CODE → GITHUB</a>
+          <span class="pill">STATUS: ACTIVE</span>
+        </div>
+      </header>
+
+      <section class="card">
+        <div class="card-title">Highlights</div>
+        <div class="grid2">
+          <div>
+            <ul>
+              <li>Reads from a TCP connection, parses request line + headers + body.</li>
+              <li>Writes status line + headers + body with correct formatting.</li>
+              <li>Designed with internal packages: request/response/router/server.</li>
+              <li>Test coverage around parsing + response formatting.</li>
+            </ul>
+          </div>
+          <div>
+            <ul>
+              <li>Explores real-world edge cases: partial reads, CRLF framing, malformed input.</li>
+              <li>Room to expand: chunked encoding, keep-alive, streaming responses, middleware.</li>
+              <li>Fits nicely with your systems/backend interest and interview storytelling.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="card">
+        <div class="card-title">Tech notes</div>
+        <ul>
+          <li>Language: <code class="inline">Go</code></li>
+          <li>IO model: blocking sockets with buffered reads</li>
+          <li>Focus: correctness + clarity > micro-optimizations</li>
+        </ul>
+      </section>
+
+      <section class="card">
+        <div class="card-title">Next improvements</div>
+        <ul>
+          <li>Add basic keep-alive support and connection reuse.</li>
+          <li>Implement chunked transfer encoding (server-side) for streaming.</li>
+          <li>Improve routing/middleware ergonomics (like net/http style).</li>
+          <li>Add a simple benchmark suite.</li>
+        </ul>
+      </section>
+
+      <footer class="footer">
+        <div class="footer-row">
+          <span>© <span id="year"></span> Shazim Rahman</span>
+          <span class="dot">•</span>
+          <a class="footer-link" href="/">Back to home</a>
+        </div>
+      </footer>
+    </main>
+
+    <script>
+      document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
+  </body>
+</html>

@@ -1,11 +1,56 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Shazim Rahman — links, projects, and contact." />
     <title>Shazim Rahman</title>
-</head>
-<body>
-    Hello World!
-</body>
+
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="icon" href="assets/favicon.ico" />
+  </head>
+
+  <body>
+    <main class="container">
+      <header class="header">
+        <img class="avatar" src="assets/avatar.jpg" alt="Shazim Rahman" />
+
+        <div class="title-row">
+          <h1 class="name">Shazim Rahman</h1>
+
+          <button id="themeToggle" class="theme-toggle" type="button" aria-label="Toggle theme">
+            <span class="theme-icon" aria-hidden="true">☾</span>
+          </button>
+        </div>
+
+        <p class="tagline">
+          Backend / Systems • Builder • Toronto
+        </p>
+
+        <p class="bio">
+          I build reliable services and developer tools. Portfolio + quick links below.
+        </p>
+      </header>
+
+      <section class="card">
+        <div class="card-title">Quick Links</div>
+        <div id="links" class="links"></div>
+      </section>
+
+      <section class="card">
+        <div class="card-title">Projects</div>
+        <div id="projects" class="links"></div>
+      </section>
+
+      <footer class="footer">
+        <div class="footer-row">
+          <span>© <span id="year"></span> Shazim Rahman</span>
+          <span class="dot">•</span>
+          <a class="footer-link" href="mailto:shazimrahman@hotmail.com">shazimrahman@hotmail.com</a>
+        </div>
+      </footer>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
 </html>
