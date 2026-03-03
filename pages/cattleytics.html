@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="CATTLEytics — case study and technical overview." />
-    <title>CATTLEytics — Shazim Rahman</title>
+    <title>CATTLEytics - Shazim Rahman</title>
 
     <script>
       (function () {
@@ -130,30 +130,10 @@
 
       <section class="card">
         <div class="card-title">Overview</div>
-
-        <div class="kvs">
-          <div class="kv">
-            <div class="k">Goal</div>
-            <div class="v">
-              Predict multiple offspring metrics (multi-target regression/classification style outputs) using sire + dam features and historical records.
-            </div>
-          </div>
-
-          <div class="kv">
-            <div class="k">Stack</div>
-            <div class="v">
-              <code class="inline">Go</code> backend (REST), <code class="inline">Postgres</code>, <code class="inline">Python</code> ML microservice (gRPC),
-              and a <code class="inline">next.js</code> frontend consuming the API.
-            </div>
-          </div>
-
-          <div class="kv">
-            <div class="k">My role</div>
-            <div class="v">
-              Owned the Go backend + DB design, API contracts, and ML serving integration (gRPC).
-            </div>
-          </div>
-        </div>
+        <p class="bio">
+          A full-stack capstone system for predicting cattle offspring traits from parental and historical feature data.
+          Designed as a production-style backend with a separate model-serving microservice.
+        </p>
 
         <div class="divider"></div>
 
@@ -163,29 +143,50 @@
       </section>
 
       <section class="card">
-        <div class="card-title">Architecture</div>
-
+        <div class="card-title">Model: MPCFIN (Implemented From Scratch)</div>
+        <p class="bio">
+          Implemented the <b>Multiplex Cross-Feature Interaction Network (MPCFIN)</b> entirely from scratch in PyTorch
+          by translating the mathematical formulation from a research paper into working code.
+        </p>
+    
         <ul>
-          <li><b>Go API</b>: authentication + request validation + REST endpoints for predictions and data access.</li>
-          <li><b>Postgres</b>: structured storage for cattle records, features, and inference-related metadata.</li>
-          <li><b>Python gRPC</b>: loads trained model(s), exposes strongly-typed inference RPCs, returns predictions to Go.</li>
-          <li><b>Frontend</b>: calls the Go API; Go fans out to Postgres + gRPC as needed.</li>
+          <li>Custom graph-based feature interaction layers.</li>
+          <li>Manual message-passing logic (no prebuilt architecture).</li>
+          <li>Custom training loop with batching, loss computation, and evaluation.</li>
+          <li>Early stopping and overfitting mitigation on small datasets.</li>
+          <li>Inference service exposed via gRPC.</li>
         </ul>
       </section>
 
       <section class="card">
-        <div class="card-title">What I built</div>
-
+        <div class="card-title">Backend Architecture</div>
         <ul>
-          <li>Designed API routes and DTOs for model inference requests/responses.</li>
-          <li>Defined gRPC service contracts (protobufs) and implemented client/server integration.</li>
-          <li>Built a clean persistence layer for feature records and related entities.</li>
-          <li>Production-minded error handling, request logging, and validation patterns.</li>
+          <li><b>Go API</b>: REST endpoints, validation, error handling, orchestration.</li>
+          <li><b>Postgres</b>: structured feature and metadata storage.</li>
+          <li><b>Python gRPC microservice</b>: model loading + inference execution.</li>
+          <li>Strict separation between API layer and ML runtime.</li>
         </ul>
+      </section>
+      
+      <section class="card">
+        <div class="card-title">My Contributions</div>
+        <ul>
+          <li>Implemented MPCFIN architecture from research paper to production-ready code.</li>
+          <li>Built full training loop and evaluation pipeline in PyTorch.</li>
+          <li>Designed and implemented gRPC inference service.</li>
+          <li>Owned Go backend API + database schema design.</li>
+          <li>Integrated model-serving with typed API contracts.</li>
+        </ul>
+      </section>
 
-        <p class="note">
-          TODO: add 1–2 screenshots (UI, architecture diagram) once you have them.
-        </p>
+      <section class="card">
+        <div class="card-title">What This Demonstrates</div>
+        <ul>
+          <li>Ability to translate academic ML research into working systems.</li>
+          <li>Full-stack backend + ML system integration.</li>
+          <li>Understanding of small-data modeling constraints.</li>
+          <li>Production-minded service design.</li>
+        </ul>
       </section>
 
       <footer class="footer">

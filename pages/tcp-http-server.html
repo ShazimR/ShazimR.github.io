@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="TCP HTTP Server — case study and repo link." />
-    <title>TCP HTTP Server — Shazim Rahman</title>
+    <title>TCP HTTP Server - Shazim Rahman</title>
 
     <script>
       (function () {
@@ -102,42 +102,34 @@
       </header>
 
       <section class="card">
-        <div class="card-title">Highlights</div>
-        <div class="grid2">
-          <div>
-            <ul>
-              <li>Reads from a TCP connection, parses request line + headers + body.</li>
-              <li>Writes status line + headers + body with correct formatting.</li>
-              <li>Designed with internal packages: request/response/router/server.</li>
-              <li>Test coverage around parsing + response formatting.</li>
-            </ul>
-          </div>
-          <div>
-            <ul>
-              <li>Explores real-world edge cases: partial reads, CRLF framing, malformed input.</li>
-              <li>Room to expand: chunked encoding, keep-alive, streaming responses, middleware.</li>
-              <li>Fits nicely with your systems/backend interest and interview storytelling.</li>
-            </ul>
-          </div>
-        </div>
+        <div class="card-title">Overview</div>
+        <p class="bio">
+          A from-scratch HTTP/1.1 server written directly on top of raw TCP sockets in Go.
+          This project intentionally avoids <code class="inline">net/http</code> to deeply understand
+          framing, connection lifecycles, parsing state machines, and real-world browser behavior.
+        </p>
       </section>
 
       <section class="card">
-        <div class="card-title">Tech notes</div>
+        <div class="card-title">Core Capabilities</div>
         <ul>
-          <li>Language: <code class="inline">Go</code></li>
-          <li>IO model: blocking sockets with buffered reads</li>
-          <li>Focus: correctness + clarity > micro-optimizations</li>
+          <li>Manual HTTP request parsing with an explicit state machine.</li>
+          <li>Supports both <code class="inline">Content-Length</code> and chunked request bodies.</li>
+          <li>Chunked transfer encoding for streaming responses (with trailers).</li>
+          <li>Persistent connections (HTTP/1.0 + HTTP/1.1 semantics).</li>
+          <li>Correct distinction between <b>404</b> and <b>405</b>.</li>
+          <li>Range requests with <b>206 Partial Content</b> + <b>416</b>.</li>
+          <li>Binary-safe I/O for video/media streaming.</li>
         </ul>
       </section>
 
       <section class="card">
-        <div class="card-title">Next improvements</div>
+        <div class="card-title">What This Demonstrates</div>
         <ul>
-          <li>Add basic keep-alive support and connection reuse.</li>
-          <li>Implement chunked transfer encoding (server-side) for streaming.</li>
-          <li>Improve routing/middleware ergonomics (like net/http style).</li>
-          <li>Add a simple benchmark suite.</li>
+          <li>Deep understanding of HTTP over TCP.</li>
+          <li>Ability to design clean, minimal abstractions.</li>
+          <li>Attention to protocol correctness and edge cases.</li>
+          <li>Production-aware thinking (timeouts, shutdown, streaming, containers).</li>
         </ul>
       </section>
 

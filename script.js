@@ -8,14 +8,14 @@ const QUICK_LINKS = [
     },
     {
         title: "LinkedIn",
-        subtitle: "Work + experience",
+        subtitle: "Experience + contact",
         url: "https://www.linkedin.com/in/shazimrahman/",
         icon: "linkedin",
         badge: "CONNECT",
     },
     {
-        title: "Resume (PDF)",
-        subtitle: "Download",
+        title: "Resume",
+        subtitle: "View and download",
         url: "assets/resume.pdf",
         icon: "file",
         badge: "PDF",
@@ -43,13 +43,6 @@ const PROJECTS = [
         url: "pages/cattleytics.html",
         icon: "sparkles",
         badge: "CASE STUDY",
-    },
-    {
-        title: "Coming soon",
-        subtitle: "More projects on the way",
-        url: "index.html",
-        icon: "arrow",
-        badge: "WIP",
     },
 ];
 // --------------------
