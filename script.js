@@ -32,15 +32,22 @@ const QUICK_LINKS = [
 const PROJECTS = [
     {
         title: "TCP HTTP Server (Go)",
-        subtitle: "HTTP server from scratch + raw tcp sockets + router",
-        url: "pages/tcp-http-server.html",
+        subtitle: "HTTP/1.1 over raw TCP • chunked • range • router",
+        url: "projects/tcp-http-server.html",
         icon: "code",
         badge: "CASE STUDY",
     },
     {
+        title: "TCP HTTP Server Demo",
+        subtitle: "LIVE: EC2 • Docker • Nginx • Cloudflare",
+        url: "https://httpdemo.shazimrahman.dev",
+        icon: "arrow",
+        badge: "LIVE",
+    },
+    {
         title: "CATTLEytics Capstone",
-        subtitle: "Go + Postgres + Python gRPC ML microservice",
-        url: "pages/cattleytics.html",
+        subtitle: "Go • Postgres • Python gRPC ML microservice",
+        url: "projects/cattleytics.html",
         icon: "sparkles",
         badge: "CASE STUDY",
     },
