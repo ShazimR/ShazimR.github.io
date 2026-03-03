@@ -104,12 +104,12 @@ function createLinkCard({ title, subtitle, url, icon, badge }) {
 }
 
 function render() {
-    document.getElementById("year").textContent = new Date().getFullYear();
-
     const linksEl = document.getElementById("links");
-    QUICK_LINKS.forEach((l) => linksEl.appendChild(createLinkCard(l)));
-
     const projectsEl = document.getElementById("projects");
+
+    if (!linksEl || !projectsEl) return;
+
+    QUICK_LINKS.forEach((l) => linksEl.appendChild(createLinkCard(l)));
     PROJECTS.forEach((p) => projectsEl.appendChild(createLinkCard(p)));
 }
 
@@ -146,6 +146,19 @@ function escapeHtml(str) {
 
 document.addEventListener("DOMContentLoaded", () => {
     initTheme();
-    document.getElementById("themeToggle")?.addEventListener("click", toggleTheme);
-    render();
+
+    const toggleBtn = document.getElementById("themeToggle");
+    if (toggleBtn) toggleBtn.addEventListener("click", toggleTheme);
+
+    // Only render link sections if they exist (homepage)
+    const linksEl = document.getElementById("links");
+    const projectsEl = document.getElementById("projects");
+
+    if (linksEl && projectsEl) {
+        render();
+    }
+
+    // Always set footer year if present
+    const yearEl = document.getElementById("year");
+    if (yearEl) yearEl.textContent = new Date().getFullYear();
 });

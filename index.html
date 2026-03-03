@@ -6,6 +6,17 @@
     <meta name="description" content="Shazim Rahman — links, projects, and contact." />
     <title>Shazim Rahman</title>
 
+    <script>
+      (function () {
+        const theme = localStorage.getItem("theme");
+        if (theme === "light") {
+          document.documentElement.setAttribute("data-theme", "light");
+        } else {
+          document.documentElement.removeAttribute("data-theme");
+        }
+      })();
+    </script>
+
     <link rel="stylesheet" href="styles.css" />
     <link rel="icon" href="assets/favicon.ico" />
   </head>
@@ -13,7 +24,7 @@
   <body>
     <main class="container">
       <header class="header">
-        <img class="avatar" src="assets/avatar.jpg" alt="Shazim Rahman" />
+        <img class="avatar" src="assets/favicon.ico" alt="Shazim Rahman" />
 
         <div class="title-row">
           <h1 class="name">Shazim Rahman</h1>
@@ -23,8 +34,8 @@
           </button>
         </div>
 
-        <p class="tagline">
-          Backend / Systems • Builder • Toronto
+        <p class="statusline">
+            $ whoami → backend/systems engineer • Toronto
         </p>
 
         <p class="bio">

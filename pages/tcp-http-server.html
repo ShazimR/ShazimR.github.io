@@ -5,6 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="TCP HTTP Server — case study and repo link." />
     <title>TCP HTTP Server — Shazim Rahman</title>
+
+    <script>
+      (function () {
+        const theme = localStorage.getItem("theme");
+        if (theme === "light") {
+          document.documentElement.setAttribute("data-theme", "light");
+        } else {
+          document.documentElement.removeAttribute("data-theme");
+        }
+      })();
+    </script>
+
     <link rel="stylesheet" href="../styles.css" />
     <style>
       .page-actions {
@@ -71,10 +83,13 @@
       <header class="header">
         <div class="title-row">
           <h1 class="name">TCP HTTP Server</h1>
-          <a class="theme-toggle" href="../index.html" aria-label="Back to home">←</a>
+
+          <button id="themeToggle" class="theme-toggle" type="button" aria-label="Toggle theme">
+            <span class="theme-icon" aria-hidden="true">☾</span>
+          </button>
         </div>
 
-        <p class="tagline">Go • Networking • HTTP parsing</p>
+        <p class="statusline">Go • Networking • HTTP parsing</p>
         <p class="bio">
           A learning-focused project: implement an HTTP/1.1-ish server over raw TCP sockets, including parsing, routing, and response writing.
         </p>
@@ -130,11 +145,12 @@
         <div class="footer-row">
           <span>© <span id="year"></span> Shazim Rahman</span>
           <span class="dot">•</span>
-          <a class="footer-link" href="/">Back to home</a>
+          <a class="footer-link" href="../index.html">Back to home</a>
         </div>
       </footer>
     </main>
 
+    <script src="../script.js"></script>
     <script>
       document.getElementById("year").textContent = new Date().getFullYear();
     </script>

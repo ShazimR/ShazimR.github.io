@@ -18,14 +18,16 @@
 
     --ring: rgba(125, 211, 252, 0.35);
 
+    --grid: rgba(255, 255, 255, 0.06);
+    --grid2: rgba(255, 255, 255, 0.03);
+
     --shadow: 0 18px 55px rgba(0, 0, 0, 0.45);
     --shadow-soft: 0 10px 25px rgba(0, 0, 0, 0.22);
 
     --radius: 18px;
     --radius-sm: 14px;
 
-    --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-    --sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+    --mono: ui-monospace, "SF Mono", "SFMono-Regular", Menlo, Monaco, Consolas, "Cascadia Mono", "JetBrains Mono", "Fira Code", "Liberation Mono", "Courier New", monospace;
 }
 
 html[data-theme="light"] {
@@ -39,10 +41,12 @@ html[data-theme="light"] {
     --muted: rgba(0, 0, 0, 0.62);
 
     --accent: #0284c7;
-    --accent2: #7c3aed;
+    --accent2: #6d28d9;
     --ok: #059669;
 
     --ring: rgba(2, 132, 199, 0.22);
+
+    --grid: rgba(0, 0, 0, 0.06);
 
     --shadow: 0 18px 55px rgba(0, 0, 0, 0.12);
     --shadow-soft: 0 10px 25px rgba(0, 0, 0, 0.10);
@@ -55,18 +59,17 @@ html[data-theme="light"] {
 body {
     margin: 0;
     min-height: 100vh;
-    font-family: var(--sans);
+    font-family: var(--mono);
     color: var(--text);
 
-    /* "softwarey" background: grid + glows */
     background:
         radial-gradient(1100px 700px at 15% -10%, rgba(125, 211, 252, 0.18), transparent 60%),
         radial-gradient(900px 600px at 110% 10%, rgba(167, 139, 250, 0.14), transparent 55%),
         radial-gradient(800px 600px at 40% 115%, rgba(52, 211, 153, 0.10), transparent 60%),
         linear-gradient(to bottom, rgba(255, 255, 255, 0.03), transparent 25%),
         /* grid */
-        linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+        linear-gradient(var(--grid) 1px, transparent 1px),
+        linear-gradient(90deg, var(--grid) 1px, transparent 1px),
         var(--bg);
     background-size:
         auto, auto, auto, auto,
@@ -99,14 +102,31 @@ body {
 .name {
     margin: 0;
     font-size: 34px;
+    font-weight: 800;
     line-height: 1.1;
     letter-spacing: -0.02em;
+    background: linear-gradient(90deg, var(--accent), var(--accent2));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
 }
 
 .tagline {
     margin: 10px 0 0;
     color: var(--muted);
     font-weight: 650;
+}
+
+.statusline {
+    margin: 12px 0 0;
+    font-family: var(--mono);
+    color: var(--muted);
+}
+
+.statusline::before {
+    content: ">";
+    margin-right: 8px;
+    color: var(--ok);
 }
 
 .bio {
@@ -230,9 +250,25 @@ body {
     transition: opacity 120ms ease;
 }
 
+.link::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 10px;
+    bottom: 10px;
+    width: 3px;
+    border-radius: 999px;
+    background: linear-gradient(180deg, var(--accent), var(--accent2));
+    opacity: 0.85;
+}
+
 .link:hover {
     transform: translateY(-1px);
-    border-color: rgba(125, 211, 252, 0.30);
+    border-color: rgba(125, 211, 252, 0.35);
+}
+
+html[data-theme="light"] .link:hover {
+    border-color: rgba(2, 132, 199, 0.35);
 }
 
 .link:hover::before {
@@ -292,6 +328,20 @@ body {
     padding: 6px 10px;
     border-radius: 999px;
     border: 1px solid var(--border);
+    border-color: rgba(125, 211, 252, 0.22);
+    background: var(--panel);
+}
+
+html[data-theme="light"] .badge {
+    position: relative;
+    z-index: 1;
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--muted);
+    padding: 6px 10px;
+    border-radius: 999px;
+    border: 1px solid var(--border);
+    border-color: rgba(2, 132, 199, 0.22);
     background: var(--panel);
 }
 
